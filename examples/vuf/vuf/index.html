@@ -28,14 +28,14 @@
     </div>
 
     <ar-scene vuforiakey="#vuforiakey"
-              vuforiadataset__stonesandchips="src:url(../resources/datasets/StonesAndChips.xml);">
+              vuforiadataset__AR="src:url(../resources/datasets/AR.xml);">
       <a-assets>
          <a-asset-item id="vuforiakey" src="key.txt"></a-asset-item>
          <a-asset-item id="tree" src="../resources/models/tree1/tree1.dae"></a-asset-item>
       </a-assets>
 
       <!-- attach to stones target. x/y in the plane, z up -->
-      <ar-frame id="frame" trackvisibility="true" visible="false" parent="vuforia.stonesandchips.stones" position="0 0 0" rotation="0 0 0">
+      <ar-frame id="frame" trackvisibility="true" visible="false" parent="vuforia.ar.cover" position="0 0 0" rotation="0 0 0">
         <a-entity id="logoscene"  scale="0.005 0.005 0.005" rotation="90 0 0" visible="false">
           <a-animation attribute="visible" to="false" dur="1"></a-animation>
           <a-animation attribute="visible" to="true" delay="10" dur="1"></a-animation>
