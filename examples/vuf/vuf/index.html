@@ -13,10 +13,13 @@
     <script src="../resources/js/aframe-look-at-component.js"></script>
   </head>
   <body>
+    
     <div hidden>
-      <div id="lookattarget" class="bottomScreen">Look at the a target ...</div>
+      <div id="lookattarget" class="bottomScreen">Look at a target ...</div>
     </div>  
+
     <div id="loader-wrapper">
+      
       <div class="splashtext">
         <h1>AFrame + Argon + Vuforia</h1>
         <h2 id="status">loading scripts...</h2>
@@ -25,6 +28,7 @@
       <div id="loader"></div>
       <div class="loader-section section-left"></div>
       <div class="loader-section section-right"></div>
+
     </div>
 
     <ar-scene vuforiakey="#vuforiakey"
@@ -35,8 +39,20 @@
       </a-assets>
 
     
-     <!-- attach to target. x/y in the plane, z up -->
-      <ar-frame id="frame" trackvisibility="true" visible="false" parent="vuforia.ar.gamingpage2" position="0 0 0" rotation="0 0 0">
+      <!-- attach to target. x/y in the plane, z up -->
+      <ar-frame id="frame" trackvisibility="true" visible="false" parent="vuforia.ar.cover" position="0 0 0" rotation="0 0 0">
+
+        <a-entity cursor="fuse: true; fuseTimeout: 500"
+                  position="0 0 -1"
+                  geometry="primitive: ring"
+                  material="color: black; shader: flat">
+            <a-animation begin="click" easing="ease-in" attribute="scale"
+                         fill="backwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation>
+            <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale"
+                         fill="forwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
+        </a-entity>
+
+
         <a-entity id="logoscene"  scale="0.005 0.005 0.005" rotation="90 0 0" visible="false">
           <a-animation attribute="visible" to="false" dur="1"></a-animation>
           <a-animation attribute="visible" to="true" delay="10" dur="1"></a-animation>
@@ -207,6 +223,13 @@
                 </a-plane>
               </a-entity>
             </a-entity>
+
+            <!-- circle -->
+            <a-circle color="#CCC" radius="20" rotation="-90 0 0" position="10 10 10"></a-circle>
+
+              
+          
+            <a-entity id="box" cursor-listener geometry="primitive: box; width:5; height:5; depth:5" material="color: blue" position="10 10 10"></a-entity>
 
           </a-entity>
 
