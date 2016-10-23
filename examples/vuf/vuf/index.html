@@ -46,8 +46,9 @@
         </a-entity>
       </ar-camera>
 
-      <a-entity id="cube" position="-3.5 1 0" geometry="primitive: box" material="color: blue"></a-entity>
-    
+      <a-entity id="cube" cursor-listener position="-3.5 1 0" geometry="primitive: box" material="color: blue"></a-entity>
+      <a-box position="-1 0.5 1" cursor-listener rotation="0 45 0" width="1" height="1" depth="1"  color="#4CC3D9" ></a-box>
+
       <!-- attach to target. x/y in the plane, z up -->
       <ar-frame id="frame" trackvisibility="true" visible="false" parent="vuforia.ar.cover" position="0 0 0" rotation="0 0 0">
 
