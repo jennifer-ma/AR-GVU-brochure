@@ -80,10 +80,19 @@ arScene.addEventListener('exit-vr', function (evt) {
     hudElem2.classList.remove("viewerMode");
 });
 
-AFRAME.registerComponent('cursor-listener', {
+function getRandColor () {
+          var letters = '0123456789ABCDEF'.split('');
+          var color = '#';
+          for (var i = 0; i < 6; i++) {
+              color += letters[Math.floor(Math.random() * 16)];
+          }
+          return color;
+      }
+      // Component to change to random color on click.
+      AFRAME.registerComponent('cursor-listener', {
         init: function () {
           this.el.addEventListener('click', function (evt) {
-            this.setAttribute('material', 'color','red');
+            this.setAttribute('material', 'color', getRandColor());
             console.log('I was clicked at: ', evt.detail.intersection.point);
           });
           this.el.addEventListener('mouseenter', function (evt) {
@@ -94,3 +103,13 @@ AFRAME.registerComponent('cursor-listener', {
           });
         }
       });
+      var content = document.querySelector('#helloworld');
+      // the ar-camera has an argon reference frame attached, so when it gets it's first value,
+      // we'll get this event 
+      arScene.addEventListener("referenceframe-statuschanged", function () {
+        var camera = document.querySelector('ar-camera');
+        var vec = camera.object3D.getWorldDirection();
+        vec.multiplyScalar(-10);
+        vec.y -= 1;
+        content.setAttribute("position", {x: vec.x, y: vec.y, z: vec.z});
+      })
