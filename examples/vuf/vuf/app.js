@@ -80,7 +80,7 @@ arScene.addEventListener('exit-vr', function (evt) {
     hudElem2.classList.remove("viewerMode");
 });
 
-document.querySelector('#cube').addEventListener('click', function () {
+arScene.addEventListener('click', function () {
   this.setAttribute('material', 'color', 'red');
   console.log('I was clicked!');
 });
