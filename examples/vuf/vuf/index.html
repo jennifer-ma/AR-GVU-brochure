@@ -50,9 +50,8 @@
       <ar-camera>
         <a-entity cursor="fuse: true; fuseTimeout: 500"
                   position="0 0 -0.1"
-                  geometry="primitive: ring; radiusOuter: 0.01; radiusInner: 0.0015;"
-                  material="color: #2E3A87; opacity:0.3;"
-                  cursor="maxDistance: 30; fuse: true">
+                  geometry="primitive: ring; radiusOuter: 0.001; radiusInner: 0.0015;"
+                  material="color: #2E3A87; opacity:0.3;">
             <a-animation begin="click" easing="ease-in" attribute="scale"
                          fill="backwards" from="0.1 0.1 0.1" to="1 1 1" dur="150"></a-animation>
             <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale"
@@ -62,13 +61,6 @@
 
        <a-entity position="-3.5 1 0">
           <a-entity mixin="cube red">
-            <a-animation begin="click" attribute="position" from="0 0 0"
-                        to="0 0 -10" dur="2000" fill="both"></a-animation>
-          </a-entity>
-        </a-entity>
-
-        <a-entity position="0 1 0">
-          <a-entity mixin="cube green">
             <a-animation begin="click" attribute="rotation" to="0 360 0"
                         easing="linear" dur="2000" fill="backwards"></a-animation>
           </a-entity>
@@ -81,10 +73,6 @@
                         to="15 0 0" dur="2000"></a-animation>
           </a-entity>
         </a-entity>
-
-        <a-entity position="0 3 0" class="clickable" mixin="cube yellow"
-                  rotation="0 45 0" scale=".05 .05 .05"></a-entity>
-                  
     
       <!-- attach to target. x/y in the plane, z up -->
       <ar-frame id="frame" trackvisibility="true" visible="false" parent="vuforia.ar.cover" position="0 0 0" rotation="0 0 0">
