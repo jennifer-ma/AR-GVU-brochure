@@ -80,7 +80,17 @@ arScene.addEventListener('exit-vr', function (evt) {
     hudElem2.classList.remove("viewerMode");
 });
 
-arScene.addEventListener('click', function () {
-  this.setAttribute('material', 'color', 'red');
-  console.log('I was clicked!');
-});
+AFRAME.registerComponent('cursor-listener', {
+        init: function () {
+          this.el.addEventListener('click', function (evt) {
+            this.setAttribute('material', 'color','red');
+            console.log('I was clicked at: ', evt.detail.intersection.point);
+          });
+          this.el.addEventListener('mouseenter', function (evt) {
+            this.setAttribute('material', 'opacity', 0.5);
+          });
+          this.el.addEventListener('mouseleave', function (evt) {
+            this.setAttribute('material', 'opacity', 1.0);
+          });
+        }
+      });
