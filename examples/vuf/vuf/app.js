@@ -75,6 +75,7 @@ arScene.addEventListener('enter-vr', function (evt) {
     hudElem.classList.add("viewerMode");
     hudElem2.classList.add("viewerMode");
 });
+
 arScene.addEventListener('exit-vr', function (evt) {
     hudElem.classList.remove("viewerMode");
     hudElem2.classList.remove("viewerMode");
