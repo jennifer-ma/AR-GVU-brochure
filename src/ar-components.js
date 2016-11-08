@@ -43,6 +43,7 @@ AFRAME.registerComponent('trackvisibility', {
     var self = this;
     console.log("INIT TEST COMPONENT");
     this.el.sceneEl.addEventListener('referenceframe-statuschanged', function(evt) {
+        console.log('~~~~~~~~~~~~~~~~~calling updateVisibility');
         self.updateVisibility(evt);
     });
   },
@@ -50,6 +51,7 @@ AFRAME.registerComponent('trackvisibility', {
   updateVisibility: function (evt) {
     console.log("visibility changed: " + evt.detail.found)
     if (this.data && evt.detail.target === this.el) {
+      console.log('~~~~~~~~~~~~~~~~~found:'+ evt.detail.found);
       this.el.object3D.visible = evt.detail.found;
     }
   },
@@ -57,4 +59,36 @@ AFRAME.registerComponent('trackvisibility', {
   update: function () {
     console.log("updated TEST COMPONENT")
   }
-}); 
+});
+
+AFRAME.registerComponent('trackvisAndPersist', {
+    schema: {
+        default: true
+    },
+
+    init: function () {
+        var self = this;
+        console.log("INIT TEST COMPONENT");
+        this.el.sceneEl.addEventListener('referenceframe-statuschanged', function (evt) {
+            console.log('~~~~~~~~~~~~~~~~~calling updateVisibility');
+            self.updateVisibility(evt);
+        });
+    },
+
+    updateVisibility: function (evt) {
+        console.log("visibility changed: " + evt.detail.found)
+        if (this.data && evt.detail.target === this.el) {
+            console.log('jennfer: found:');
+            console.log('found:'+ evt.detail.found);
+            if (evt.detail.found == true) { // new code
+                console.log("j: found");
+                this.el.object3D.visible = evt.detail.found;
+            }
+            
+        }
+    },
+
+    update: function () {
+        console.log("updated TEST COMPONENT")
+    }
+});
