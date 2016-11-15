@@ -1579,6 +1579,7 @@
 	  updateVisibility: function (evt) {
 	    console.log("visibility changed: " + evt.detail.found)
 	    if (this.data && evt.detail.target === this.el) {
+	    	console.log('~~~~~~~~~~~~~~~~~found:'+ evt.detail.found);
 	      this.el.object3D.visible = evt.detail.found;
 	    }
 	  },

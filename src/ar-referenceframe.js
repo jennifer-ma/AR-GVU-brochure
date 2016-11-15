@@ -43,10 +43,10 @@ AFRAME.registerComponent('referenceframe', {
         if (!el.sceneEl.isArgon) {
             throw new Error('referenceframe must be used on a child of a <ar-scene>.');
         }
-	   this.localRotationEuler = new THREE.Euler(0,0,0,'XYZ');
-       this.localPosition = { x: 0, y: 0, z: 0 };
-       this.localScale = { x: 1, y: 1, z: 1 };
-       this.knownFrame = false;
+	    this.localRotationEuler = new THREE.Euler(0,0,0,'XYZ');
+        this.localPosition = { x: 0, y: 0, z: 0 };
+        this.localScale = { x: 1, y: 1, z: 1 };
+        this.knownFrame = false;
         el.addEventListener('componentchanged', this.updateLocalTransform.bind(this));
         el.sceneEl.addEventListener('argon-initialized', function() {
               self.update(self.data);
