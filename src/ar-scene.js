@@ -40,8 +40,8 @@ AFRAME.registerElement('ar-scene', {
     
     createdCallback: {
       value: function () {
-        this.isMobile = AFRAME.utils.isMobile();
-        this.isIOS = AFRAME.utils.isIOS();
+        this.isMobile = (AFRAME.utils.isMobile || AFRAME.utils.device.isMobile)();
+        this.isIOS = (AFRAME.utils.isIOS || AFRAME.utils.device.isIOS)();
         this.isScene = true;
         this.isArgon = true;        
         this.object3D = new THREE.Scene();
